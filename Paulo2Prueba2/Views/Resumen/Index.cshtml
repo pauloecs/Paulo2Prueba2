@@ -19,17 +19,17 @@
 }
 
 
-<h2>Resumen</h2>
+<h2>Resumen:</h2>
 
 <p>
-    Resumen del catalogo de Fabrica UNO:
+    
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            Categoria
         </th>
-        <th></th>
+        <th>Resumen</th>
     </tr>
     
     @foreach (var item in Model)
@@ -42,7 +42,7 @@
                 Cantidad de productos:
                 @item.Producto.Count()
                 <br />
-                Precio promedio:
+                Precio promedio: $
                 @{ 
                     int suma=0;
                     int cantidad=0;
@@ -63,6 +63,7 @@
                     }
 
                     @promedio
+                    
                 }
                 <br />
                 Porcentaje de productos en esta categoria:
@@ -74,9 +75,35 @@
     }
 
 </table>
-
+<h2>Listados:</h2>
 <table class="table">
+    <tr>
+        <th>
+            Categoria
+           
+        </th>
+        <th> Productos</th>
+    </tr>
 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+
+                
+                @foreach( var productoo in item.Producto)
+                {
+                    @productoo.nombre;
+                    <br />
+                }
+                
+                
+            </td>
+        </tr>
+    }
 
 </table>
 
