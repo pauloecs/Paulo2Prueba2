@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Paulo2Prueba2.Models.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PlantillaPaulo.cshtml";
+}
+
+<h2>Resumen</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                Cantidad de productos:
+                @item.Producto.Count()
+                <br />
+                Precio promedio:
+                @{ 
+                    int suma=0;
+                    int cantidad=0;
+                    foreach( var producto in item.Producto)
+                    {
+                        suma =+ producto.precio;
+                        cantidad++;
+
+                    }
+                    if (cantidad == 0)
+                    {
+                        cantidad = 1;
+                    }
+                    int promedio= suma / cantidad;
+                    @promedio
+                }
+                
+
+            </td>
+        </tr>
+    }
+
+</table>
