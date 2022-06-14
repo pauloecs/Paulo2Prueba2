@@ -5,10 +5,24 @@
     Layout = "~/Views/Shared/_PlantillaPaulo.cshtml";
 }
 
+@{ 
+    //Para saber la cantidad total de productos
+    int totalProductos=0;
+    foreach(var categoriaaa in Model)
+    {
+        foreach( var productoo in categoriaaa.Producto)
+        {
+            totalProductos++;
+        }
+    }
+    //@totalProductos;
+}
+
+
 <h2>Resumen</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    Resumen del catalogo de Fabrica UNO:
 </p>
 <table class="table">
     <tr>
@@ -17,7 +31,7 @@
         </th>
         <th></th>
     </tr>
-
+    
     @foreach (var item in Model)
     {
         <tr>
@@ -32,6 +46,7 @@
                 @{ 
                     int suma=0;
                     int cantidad=0;
+                    int promedio = 0;
                     foreach( var producto in item.Producto)
                     {
                         suma =+ producto.precio;
@@ -40,11 +55,18 @@
                     }
                     if (cantidad == 0)
                     {
-                        cantidad = 1;
+                        promedio = 0;
                     }
-                    int promedio= suma / cantidad;
+                    else
+                    {
+                        promedio = suma / cantidad;
+                    }
+
                     @promedio
                 }
+                <br />
+                Porcentaje de productos en esta categoria:
+                @((cantidad*100)/totalProductos)
                 
 
             </td>
@@ -52,3 +74,9 @@
     }
 
 </table>
+
+<table class="table">
+
+
+</table>
+
