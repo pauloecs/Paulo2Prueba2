@@ -9,14 +9,9 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-fixed-top bg-success">
+    <div class="navbar navbar-default bg-success">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 @Html.ActionLink("Fabrica UNO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
@@ -31,10 +26,16 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy;1968 - Fabrica UNO</p>
-        </footer>
-    </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <footer class="text-warning">
+                    <p>Fabrica UNO, desde 1968.</p>
+                </footer>
+            </div>
+        </div>
+    </div><!--Cierre del continer body content-->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
